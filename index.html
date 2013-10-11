@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>xuwei-k 書</title>
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+
+<div>
+<ul id="list">
+</ul>
+</div>
+
+</body>
+<script>                                                                                                    
+(function(){                                                                                                
+  var callback = function(data){
+    for(var i = 0; i < data.tree.length; i++){
+      var tree = data.tree[i]
+      if(tree.type === "blob" && tree.path != ".gitignore"){
+        var path = tree.path
+        $("#list").append("<li><a target='_blank' href='" + path + "'>" + path + "</a></li>")
+      }
+    }
+  }
+  $.get("https://api.github.com/repos/xuwei-k/sho/git/trees/gh-pages", {}, callback)
+})()
+</script>
+</html>
