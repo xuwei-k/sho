@@ -18,7 +18,7 @@
   var callback = function(data){
     for(var i = 0; i < data.tree.length; i++){
       var tree = data.tree[i]
-      if(tree.type === "blob" && tree.path != ".gitignore"){
+      if(tree.type === "blob" && tree.path != ".gitignore" && tree.path != "README.md" && tree.path != "index.html"){
         var path = tree.path
         $("#list").append("<li><a target='_blank' href='" + path + "'>" + path + "</a></li>")
       }
